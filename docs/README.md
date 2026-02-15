@@ -121,7 +121,7 @@ This project demonstrates the feasibility of an AI-driven, Moodle-integrated aut
 - [Project Repository](https://github.com/cepdnaclk/e20-4yp-ai-driven-automated-feedback-and-tutoring-system-for-higher-education)
 - [Project Page](https://cepdnaclk.github.io/ai-driven-automated-feedback-and-tutoring-system-for-higher-education)
 - [Department of Computer Engineering](http://www.ce.pdn.ac.lk/)
-- [University of Peradeniya](https://eng.pdn.ac.lk/)
+- [University of Peradeniya](https://pdn.ac.lk/)
 
 [//]: # "Please refer this to learn more about Markdown syntax"
 [//]: # "https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet"
