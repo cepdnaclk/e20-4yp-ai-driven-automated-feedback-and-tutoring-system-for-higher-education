@@ -5,7 +5,7 @@ Built for CO425 Final Year Project (University of Peradeniya).
 
 ---
 
-## ✨ Key Features
+## Key Features
 
 - **Moodle Integration (REST APIs)**  
   Fetch courses, assignments, submissions using a service user + token.
@@ -39,7 +39,7 @@ Built for CO425 Final Year Project (University of Peradeniya).
 
 ---
 
-## 🧱 Architecture (High Level)
+## Architecture (High Level)
 
 **Moodle → Scheduler → Backend (FastAPI) → DB (PostgreSQL + pgvector) → LLM Engine → Feedback back to Moodle**
 
@@ -51,7 +51,7 @@ Built for CO425 Final Year Project (University of Peradeniya).
 
 ---
 
-## ✅ Current Progress
+## Current Progress
 
 - Moodle local deployment + REST services enabled
 - Token-based auth + service user configured
@@ -64,7 +64,7 @@ Built for CO425 Final Year Project (University of Peradeniya).
 
 ---
 
-## 🧪 Evaluation Plan
+## Evaluation Plan
 
 - **Dataset**: anonymized real Moodle submissions
 - **Metrics**:
@@ -79,7 +79,7 @@ Built for CO425 Final Year Project (University of Peradeniya).
 
 ---
 
-## 🚀 Quick Start (Local)
+## Quick Start (Local)
 
 > Update URLs and tokens based on your setup.
 
@@ -126,7 +126,7 @@ python scheduler_deadline_pipeline.py
 
 ---
 
-## 📌 API Endpoints (Example)
+## API Endpoints (Example)
 
 - `POST /ingest/submission`  
   Ingest cleaned text / extracted text and store in DB
@@ -141,7 +141,7 @@ python scheduler_deadline_pipeline.py
 
 ---
 
-## 📂 Suggested Repository Structure
+## Suggested Repository Structure
 
 ```
 .
@@ -157,7 +157,7 @@ python scheduler_deadline_pipeline.py
 
 ---
 
-## 🔐 Notes on Privacy & Ethics
+## Notes on Privacy & Ethics
 
 - Use anonymized student submissions for experiments.
 - Store only necessary evidence for plagiarism checks.
@@ -165,12 +165,12 @@ python scheduler_deadline_pipeline.py
 
 ---
 
-## 👥 Team
+## Team
 
 CO425 Final Year Project – Department of Computer Engineering, University of Peradeniya
 
 ---
 
-## 📜 License
+## License
 
 Add your license here (e.g., MIT) or keep it private for university submission.
