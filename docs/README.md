@@ -119,7 +119,7 @@ This project demonstrates the feasibility of an AI-driven, Moodle-integrated aut
 ## Links
 
 - [Project Repository](https://github.com/cepdnaclk/e20-4yp-ai-driven-automated-feedback-and-tutoring-system-for-higher-education)
-- [Project Page](https://cepdnaclk.github.io/ai-driven-automated-feedback-and-tutoring-system-for-higher-education)
+- [Project Page](https://cepdnaclk.github.io/e20-4yp-ai-driven-automated-feedback-and-tutoring-system-for-higher-education/)
 - [Department of Computer Engineering](http://www.ce.pdn.ac.lk/)
 - [University of Peradeniya](https://pdn.ac.lk/)
 
