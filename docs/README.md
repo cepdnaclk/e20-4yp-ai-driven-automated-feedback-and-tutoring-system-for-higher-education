@@ -75,7 +75,6 @@ The system follows a fully automated pipeline:
 6. **Validation and Quality Control (Agent 4)**  
    Ensure consistency, detect anomalies, and apply fallback mechanisms.
 
-<<<<<<< Updated upstream
 ---
 
 ## System Architecture
@@ -85,6 +84,29 @@ The system follows a fully automated pipeline:
 - Database: PostgreSQL
 - AI Layer: OpenAI, Gemini, Groq APIs
 - Scheduler: Deadline-triggered processing system
+
+---
+## System Architecture Diagram
+
+![System Architecture](/images/architecture.png)
+
+The figure illustrates the overall architecture of EduTutor AI, including Moodle integration, backend processing, multi-agent workflow, and database storage.
+
+---
+
+## Workflow Pipeline
+
+![Pipeline](/images/pipeline.png)
+
+The pipeline shows the automated flow from assignment submission to rubric generation, evaluation, feedback generation, and validation.
+
+---
+
+## Performance Results
+
+![Results](/images/results.png)
+
+The graph highlights improvements in grading accuracy and reduction in error compared to baseline methods.
 
 ---
 
@@ -127,77 +149,12 @@ The system follows a fully automated pipeline:
 - Requires further long-term evaluation in real classrooms  
 
 ---
-=======
-## System Architecture Diagram
-
-![System Architecture](/images/architecture.png)
-
-The figure illustrates the overall architecture of EduTutor AI, including Moodle integration, backend processing, multi-agent workflow, and database storage.
-
----
-
-## Workflow Pipeline
-
-![Pipeline](/images/pipeline.png)
-
-The pipeline shows the automated flow from assignment submission to rubric generation, evaluation, feedback generation, and validation.
-
----
-
-## Performance Results
-
-![Results](/images/results.png)
-
-The graph highlights improvements in grading accuracy and reduction in error compared to baseline methods.
-
-## Experiment Setup and Implementation
-
-**System Stack**
-
-- Moodle (REST API integration)
-- Python Deadline Scheduler (pipeline orchestration)
-- FastAPI Backend (AI engine and endpoints)
-- PostgreSQL (submissions + results) + **pgvector** (embeddings)
-- Redis (caching)
-- LLM Engine (Gemini / Bedrock – configurable)
-
-**Key Implemented Components**
-
-- Moodle API wrapper with validation and error handling
-- Deadline-based trigger flow (fair grading)
-- File organization and submission ingestion pipeline
-- Question-level semantic plagiarism detection (vector similarity + evidence storage)
-- Modular multi-agent grading workflow with a QA loop
-- Student learning history tables for concept tracking and trend detection
-
-## Results and Analysis
-
-**Current preliminary results (mid-progress)**
-
-- Stable Moodle API connectivity and data retrieval confirmed
-- Automated pipeline execution demonstrated end-to-end
-- Structured AI feedback generation validated on real submission flows
-- Plagiarism similarity computation at question-level implemented with stored evidence
-
-**Planned analysis (final phase)**
-
-- Compare AI feedback vs instructor feedback quality scores
-- Evaluate consistency across students and assignments
-- Measure latency and scalability of the end-to-end pipeline
-- Study impact of rubric prompting and agent-based decomposition on feedback quality
->>>>>>> Stashed changes
 
 ## Conclusion
 
 EduTutor AI demonstrates the effectiveness of multi-agent AI systems in delivering scalable and personalized feedback within LMS platforms. The system successfully improves grading accuracy, feedback quality, and adaptability while maintaining practical deployability.
 
-<<<<<<< Updated upstream
 Future work will focus on improving robustness, expanding datasets, and incorporating advanced learning analytics for long-term educational insights.
-=======
-## Publications
-
-[//]: # "Note: Uncomment each once you uploaded the files to the repository"
->>>>>>> Stashed changes
 
 ---
 
