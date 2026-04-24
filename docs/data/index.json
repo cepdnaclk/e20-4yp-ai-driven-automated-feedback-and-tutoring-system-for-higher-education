@@ -32,10 +32,12 @@
     "Artificial Intelligence",
     "Automated Grading",
     "Moodle Integration",
-    "LLM",
-    "Plagiarism Detection",
-    "Education Technology"
+    "Large Language Models",
+    "Multi-Agent Systems",
+    "Educational Technology"
   ],
   "image": "cover_page.jpg",
-  "thumbnail": "thumbnail.jpg"
+  "thumbnail": "thumbnail.jpg",
+  "github": "https://github.com/cepdnaclk/e20-4yp-ai-driven-automated-feedback-and-tutoring-system-for-higher-education",
+  "projectSummary": "The rapid growth of higher education and the increasing shift towards online and hybrid learning environments have created significant challenges in delivering timely, consistent, and personalized feedback to students. Traditional grading approaches are time-consuming, difficult to scale, and often suffer from inconsistencies due to human limitations. This project addresses these challenges by developing EduTutor AI, an AI-driven automated feedback and tutoring system designed for seamless integration into Learning Management Systems (LMS), specifically Moodle.\n\nThe proposed system introduces a multi-agent architecture to improve the reliability and effectiveness of automated feedback. The system consists of four key components: a rubric generation agent that creates structured grading criteria from assignment descriptions and reference answers, an answer evaluation agent that assesses student submissions based on the generated rubric, a feedback generation agent that produces personalized and adaptive feedback, and a validation agent that ensures consistency, correctness, and robustness of outputs. This modular design reduces common issues in single-model AI systems such as inconsistency, hallucination, and overgeneralized responses.\n\nThe system operates as an automated pipeline triggered by assignment deadlines, eliminating manual intervention and enabling scalability for large classes. It also incorporates adaptive learning mechanisms by classifying students into performance levels and generating tailored feedback accordingly. Additionally, the system supports the generation of longitudinal learning data, enabling future analysis of student progress across multiple assignments and semesters.\n\nExperimental evaluation was conducted using benchmark datasets including the ASAG dataset for grading accuracy and SAF dataset for feedback quality. The results demonstrate a 47% reduction in grading error and a 24 percentage point improvement in grading accuracy compared to baseline approaches. Feedback quality was evaluated using semantic similarity and coverage metrics, with OpenAI-based models achieving the highest overall performance.\n\nOverall, EduTutor AI provides a scalable, reliable, and practical solution for automated grading and feedback in higher education. The system bridges the gap between research prototypes and real-world deployment within LMS platforms, reducing instructor workload while improving student learning outcomes. Future work includes enhancing robustness, expanding dataset diversity, and integrating advanced learning analytics for long-term educational insights."
 }
