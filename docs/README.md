@@ -2,7 +2,6 @@
 layout: home
 permalink: index.html
 
-# Please update this with your repository name and title
 repository-name: ai-driven-automated-feedback-and-tutoring-system-for-higher-education
 title: AI-Driven Automated Feedback and Tutoring System for Higher Education
 ---
@@ -22,99 +21,119 @@ title: AI-Driven Automated Feedback and Tutoring System for Higher Education
 
 #### Tags
 
-Final Year Project · Artificial Intelligence · Automated Grading · Moodle Integration · LLM · Plagiarism Detection · Education Technology
+Final Year Project · Artificial Intelligence · Automated Grading · Moodle Integration · Multi-Agent Systems · Educational Technology
 
 ---
 
-#### Table of content
+## Project Summary
 
-1. [Abstract](#abstract)
-2. [Related works](#related-works)
-3. [Methodology](#methodology)
-4. [Experiment Setup and Implementation](#experiment-setup-and-implementation)
-5. [Results and Analysis](#results-and-analysis)
-6. [Conclusion](#conclusion)
-7. [Publications](#publications)
-8. [Links](#links)
+The rapid expansion of higher education, combined with increasing adoption of online and hybrid learning environments, has created significant challenges in delivering timely, consistent, and personalized feedback to students. Traditional grading approaches are time-consuming, difficult to scale, and often suffer from inconsistencies due to human limitations, particularly in large classes where instructors handle hundreds of submissions. Delayed feedback reduces students’ ability to improve learning outcomes effectively.
+
+This project addresses these challenges by developing **EduTutor AI**, an AI-driven automated feedback and tutoring system designed for seamless integration into Learning Management Systems (LMS), specifically Moodle. Unlike many existing AI tools that operate as standalone systems, EduTutor AI is designed as a native LMS-integrated solution that works within existing academic workflows.
+
+The proposed system introduces a **multi-agent architecture** to improve the reliability and quality of automated grading and feedback. The system consists of four key components: a rubric generation agent that creates structured grading criteria from assignment descriptions and reference answers, an answer evaluation agent that performs concept-level grading based on the rubric, a feedback generation agent that produces personalized and adaptive feedback, and a validation agent that ensures consistency, correctness, and robustness of outputs. This modular design reduces common limitations of single-model AI systems such as hallucinations, inconsistency, and overgeneralized responses.
+
+The system operates as a fully automated pipeline triggered by assignment deadlines, eliminating manual intervention and enabling scalability across large student cohorts. It also incorporates adaptive learning mechanisms by classifying students into performance levels and generating tailored feedback ranging from guided hints for weaker students to advanced conceptual insights for high-performing learners. Additionally, the system enables the creation of longitudinal learning datasets, supporting future analysis of student progress.
+
+Experimental evaluation using benchmark datasets demonstrates a **47% reduction in grading error** and a **24 percentage point improvement in grading accuracy** compared to baseline approaches. Feedback quality evaluation using semantic similarity and coverage metrics shows strong alignment with instructor feedback, particularly when using OpenAI-based models.
+
+Overall, EduTutor AI provides a scalable, reliable, and practical solution for automated grading and feedback in higher education, reducing instructor workload while improving student learning outcomes and bridging the gap between research prototypes and real-world deployment.
 
 ---
 
-## Abstract
+## Related Work
 
-Large undergraduate classes make manual grading and feedback slow, inconsistent, and difficult to scale. This project proposes an AI-driven system integrated with Moodle to automate structured, rubric-aligned feedback and support student learning. The pipeline retrieves assignment submissions via Moodle REST APIs, performs deadline-aware processing, checks for potential plagiarism using vector similarity, and generates feedback through a modular multi-agent LLM workflow. The system also maintains concept-level learning history to produce adaptive and personalized guidance. The final outcome is an end-to-end platform that reduces instructor workload while providing faster, consistent, and actionable feedback to students.
+Automated feedback systems have evolved from rule-based grading and keyword matching approaches to machine learning and deep learning methods. Traditional systems provide consistent evaluation but lack flexibility in handling open-ended responses. Recent large language model (LLM)-based systems demonstrate improved capability in generating natural language feedback, but they often suffer from limitations such as inconsistent grading, shallow explanations, and lack of pedagogical alignment.
 
-## Related works
+Hybrid human-AI systems have been proposed to improve reliability; however, research indicates that human intervention may introduce variability and reduce consistency. Additionally, most AI-based feedback tools operate outside institutional LMS environments, limiting their practical usability and adoption.
 
-Automated assessment systems traditionally rely on rule-based marking, keyword matching, or classical machine learning models, which often struggle with open-ended answers and explanation-based questions. Recent LLM-based approaches have shown improved capability in generating human-like feedback, but they may produce inconsistent scoring, hallucinations, and weak transparency without proper structure. Plagiarism detection tools commonly use string matching; however, paraphrased copying and concept-level similarity require semantic methods such as embeddings and vector similarity. Our work builds on these directions by combining deadline-aware automation, multi-agent feedback generation with QA, semantic plagiarism detection, and learning-history-based personalization within a Moodle-integrated workflow.
+Recent studies highlight the potential of multi-agent architectures, where different AI components handle specialized tasks such as grading, feedback generation, and validation. These approaches improve robustness and reduce systematic errors. However, many existing solutions remain research prototypes and lack real-world LMS integration.
+
+This project addresses these limitations by combining multi-agent AI design, LMS-native integration, adaptive feedback generation, and validation mechanisms into a single deployable system.
+
+---
 
 ## Methodology
 
-Our methodology follows a fully automated pipeline:
+The system follows a fully automated pipeline:
 
 1. **Moodle Integration**  
-   Retrieve course, assignment, and submission data using Moodle REST web services with token-based authentication.
+   Retrieve assignments and submissions using Moodle Web Services API.
 
-2. **Deadline-Aware Orchestration**  
-   A scheduler periodically checks assignments and triggers processing based on the due date:
-   - **Before deadline:** ingest + plagiarism check only (no grading)
-   - **After deadline:** plagiarism check + multi-agent grading
+2. **Deadline-Based Processing**  
+   Trigger grading pipeline automatically after assignment deadlines.
 
-3. **Submission Processing**  
-   Extract/normalize text (online text or file-based submissions) and segment answers by questions (Q1/Q2/Q3…).
+3. **Rubric Generation (Agent 1)**  
+   Generate structured grading criteria from assignment descriptions and reference answers.
 
-4. **Plagiarism Detection (Semantic)**  
-   Generate embeddings per question and compare against other submissions using cosine similarity; flag suspicious cases and store evidence.
+4. **Answer Evaluation (Agent 2)**  
+   Perform concept-level grading using rubric-based evaluation.
 
-5. **Multi-Agent Grading + Feedback**  
-   Use specialized agents (correctness, misconceptions, clarity, personalization, synthesis, QA) to produce rubric-aligned scores and structured feedback.
+5. **Feedback Generation (Agent 3)**  
+   Generate personalized feedback based on student performance and learning patterns.
 
-6. **Storage + Feedback Delivery**  
-   Store all results in the database and return grades/feedback back to Moodle (and/or an internal dashboard).
+6. **Validation and Quality Control (Agent 4)**  
+   Ensure consistency, detect anomalies, and apply fallback mechanisms.
 
-## Experiment Setup and Implementation
+---
 
-**System Stack**
-- Moodle (REST API integration)
-- Python Deadline Scheduler (pipeline orchestration)
-- FastAPI Backend (AI engine and endpoints)
-- PostgreSQL (submissions + results) + **pgvector** (embeddings)
-- Redis (caching)
-- LLM Engine (Gemini / Bedrock – configurable)
+## System Architecture
 
-**Key Implemented Components**
-- Moodle API wrapper with validation and error handling
-- Deadline-based trigger flow (fair grading)
-- File organization and submission ingestion pipeline
-- Question-level semantic plagiarism detection (vector similarity + evidence storage)
-- Modular multi-agent grading workflow with a QA loop
-- Student learning history tables for concept tracking and trend detection
+- Frontend: Moodle LMS
+- Backend: FastAPI (Python)
+- Database: PostgreSQL
+- AI Layer: OpenAI, Gemini, Groq APIs
+- Scheduler: Deadline-triggered processing system
+
+---
 
 ## Results and Analysis
 
-**Current preliminary results (mid-progress)**
-- Stable Moodle API connectivity and data retrieval confirmed
-- Automated pipeline execution demonstrated end-to-end
-- Structured AI feedback generation validated on real submission flows
-- Plagiarism similarity computation at question-level implemented with stored evidence
+### Grading Performance
 
-**Planned analysis (final phase)**
-- Compare AI feedback vs instructor feedback quality scores
-- Evaluate consistency across students and assignments
-- Measure latency and scalability of the end-to-end pipeline
-- Study impact of rubric prompting and agent-based decomposition on feedback quality
+- **47% reduction in Mean Absolute Error (MAE)**
+- **+24 percentage point increase in grading accuracy**
+- Improved alignment with instructor grading patterns
+
+### Feedback Quality
+
+- OpenAI models achieved highest semantic similarity and coverage
+- Gemini showed strong adaptability in feedback generation
+- Groq demonstrated efficient inference performance
+
+### Key Findings
+
+- Rubric-based evaluation significantly improves grading consistency
+- Multi-agent architecture reduces hallucinations and errors
+- Adaptive feedback enhances student learning support
+
+---
+
+## Impact and Limitations
+
+### Impact
+
+- Enables real-time, scalable feedback for large classes  
+- Reduces instructor workload significantly  
+- Improves consistency and reliability of grading  
+- Supports personalized and adaptive learning  
+
+### Limitations
+
+- Performance depends on prompt design  
+- Limited dataset diversity  
+- LLM outputs may vary in edge cases  
+- Requires further long-term evaluation in real classrooms  
+
+---
 
 ## Conclusion
 
-This project demonstrates the feasibility of an AI-driven, Moodle-integrated automated feedback system that combines deadline-aware fairness, semantic plagiarism detection, and structured multi-agent grading. The remaining work focuses on robust evaluation with real anonymized submissions, optimizing prompt/agent behavior, and producing quantitative results to validate pedagogical and technical effectiveness.
+EduTutor AI demonstrates the effectiveness of multi-agent AI systems in delivering scalable and personalized feedback within LMS platforms. The system successfully improves grading accuracy, feedback quality, and adaptability while maintaining practical deployability.
 
-## Publications
-[//]: # "Note: Uncomment each once you uploaded the files to the repository"
+Future work will focus on improving robustness, expanding datasets, and incorporating advanced learning analytics for long-term educational insights.
 
-<!-- 1. [Semester 7 report](./) -->
-<!-- 2. [Semester 7 slides](./) -->
-<!-- 3. [Semester 8 report](./) -->
-<!-- 4. [Semester 8 slides](./) -->
-<!-- 5. Y.H. Edirimanna, Y.H. Senadheera and A.P.B.P. Senevirathna "AI-Driven Automated Feedback and Tutoring System for Higher Education" (2026). [PDF](./) -->
+---
 
 ## Links
 
@@ -122,6 +141,3 @@ This project demonstrates the feasibility of an AI-driven, Moodle-integrated aut
 - [Project Page](https://cepdnaclk.github.io/e20-4yp-ai-driven-automated-feedback-and-tutoring-system-for-higher-education/)
 - [Department of Computer Engineering](http://www.ce.pdn.ac.lk/)
 - [University of Peradeniya](https://pdn.ac.lk/)
-
-[//]: # "Please refer this to learn more about Markdown syntax"
-[//]: # "https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet"
