@@ -86,9 +86,10 @@ The system follows a fully automated pipeline:
 - Scheduler: Deadline-triggered processing system
 
 ---
+
 ## System Architecture Diagram
 
-![System Architecture](/images/architecture.png)
+![System Architecture](./images/architecture.png)
 
 The figure illustrates the overall architecture of EduTutor AI, including Moodle integration, backend processing, multi-agent workflow, and database storage.
 
@@ -96,7 +97,7 @@ The figure illustrates the overall architecture of EduTutor AI, including Moodle
 
 ## Workflow Pipeline
 
-![Pipeline](/images/pipeline.png)
+![Pipeline](./images/pipeline.png)
 
 The pipeline shows the automated flow from assignment submission to rubric generation, evaluation, feedback generation, and validation.
 
@@ -104,7 +105,7 @@ The pipeline shows the automated flow from assignment submission to rubric gener
 
 ## Performance Results
 
-![Results](/images/results.png)
+![Results](./images/results.png)
 
 The graph highlights improvements in grading accuracy and reduction in error compared to baseline methods.
 
@@ -136,17 +137,17 @@ The graph highlights improvements in grading accuracy and reduction in error com
 
 ### Impact
 
-- Enables real-time, scalable feedback for large classes  
-- Reduces instructor workload significantly  
-- Improves consistency and reliability of grading  
-- Supports personalized and adaptive learning  
+- Enables real-time, scalable feedback for large classes
+- Reduces instructor workload significantly
+- Improves consistency and reliability of grading
+- Supports personalized and adaptive learning
 
 ### Limitations
 
-- Performance depends on prompt design  
-- Limited dataset diversity  
-- LLM outputs may vary in edge cases  
-- Requires further long-term evaluation in real classrooms  
+- Performance depends on prompt design
+- Limited dataset diversity
+- LLM outputs may vary in edge cases
+- Requires further long-term evaluation in real classrooms
 
 ---
 
